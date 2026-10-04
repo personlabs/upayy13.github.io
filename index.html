@@ -17,17 +17,17 @@
         }
 
         body {
-            background: #08090d;
+            background: #060709;
             color: #e2e8f0;
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             line-height: 1.7;
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -38,20 +38,20 @@
         .container {
             max-width: 880px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* HEADER & NAVBAR */
         header {
-            padding: 20px 0;
+            padding: 18px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1f2430;
+            border-bottom: 1px solid rgba(139, 124, 255, 0.1);
             position: sticky;
             top: 0;
-            background: rgba(8, 9, 13, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(6, 7, 9, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 100;
         }
 
@@ -59,13 +59,14 @@
             font-weight: 800;
             color: #8b7cff;
             text-decoration: none;
-            font-size: 1.3rem;
-            letter-spacing: 1.5px;
+            font-size: 1.35rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(139, 124, 255, 0.3);
         }
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 22px;
         }
 
         nav a {
@@ -73,20 +74,21 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         nav a:hover {
             color: #8b7cff;
+            text-shadow: 0 0 10px rgba(139, 124, 255, 0.4);
         }
 
         section {
-            padding: 55px 0;
+            padding: 65px 0;
         }
 
         h1 {
-            font-size: 2.8rem;
-            line-height: 1.25;
+            font-size: 2.9rem;
+            line-height: 1.2;
             margin-bottom: 20px;
             color: #ffffff;
             font-weight: 800;
@@ -96,8 +98,9 @@
             font-size: 1.8rem;
             margin-bottom: 24px;
             color: #ffffff;
-            border-bottom: 2px solid #1f2430;
-            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(139, 124, 255, 0.2);
+            padding-bottom: 12px;
+            display: inline-block;
         }
 
         .purple {
@@ -105,26 +108,63 @@
         }
 
         .tagline {
-            letter-spacing: 2px;
-            font-size: 0.85rem;
+            letter-spacing: 2.5px;
+            font-size: 0.82rem;
             color: #8b7cff;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
+            display: inline-block;
+            background: rgba(139, 124, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(139, 124, 255, 0.2);
         }
 
         .card {
-            background: #151720;
-            padding: 25px;
-            margin: 15px 0;
-            border-radius: 16px;
+            background: linear-gradient(145deg, #12141c, #0e1017);
+            padding: 28px;
+            margin: 18px 0;
+            border-radius: 18px;
             border: 1px solid #1f2430;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            border-color: #8b7cff;
+            transform: translateY(-4px);
+            border-color: rgba(139, 124, 255, 0.5);
+            box-shadow: 0 8px 30px rgba(139, 124, 255, 0.12);
+        }
+
+        /* STYLING QUOTES INTERAKTIF DI BAWAH FOTO */
+        .quote-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid #8b7cff;
+            user-select: none;
+            margin-top: 15px;
+            padding: 18px 20px;
+        }
+
+        .quote-card:active {
+            transform: scale(0.98);
+        }
+
+        .quote-text {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 6px;
+            transition: opacity 0.4s ease;
+        }
+
+        .quote-hint {
+            font-size: 0.72rem;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .profile-img {
@@ -133,29 +173,34 @@
             aspect-ratio: 4 / 5;
             object-fit: cover;
             object-position: top center;
-            border-radius: 16px;
-            border: 2px solid #8b7cff;
-            box-shadow: 0 8px 25px rgba(139, 124, 255, 0.15);
+            border-radius: 18px;
+            border: 2px solid rgba(139, 124, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(139, 124, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
+            grid-template-columns: 1fr 310px;
+            gap: 45px;
             align-items: center;
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: 280px 1fr;
-            gap: 30px;
+            gap: 35px;
             align-items: start;
         }
 
         .minat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            gap: 22px;
         }
 
         .minat-grid .card {
@@ -166,30 +211,33 @@
             font-size: 1.15rem;
             font-weight: bold;
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .minat-desc {
-            font-size: 0.92rem;
+            font-size: 0.93rem;
             color: #94a3b8;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .journey-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 22px;
         }
 
         .journey-list {
             list-style: none;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .journey-list li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
+            padding-left: 22px;
+            margin-bottom: 10px;
             color: #94a3b8;
             font-size: 0.95rem;
         }
@@ -198,46 +246,198 @@
             content: "•";
             color: #8b7cff;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             position: absolute;
             left: 0;
-            top: -2px;
+            top: -3px;
         }
 
-        /* MEDIA SOSIAL & KONTAK */
+        .changelog-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 124, 255, 0.3), transparent);
+            margin: 20px 0 10px 0;
+        }
+
+        .changelog-timeline {
+            border-left: 2px solid rgba(139, 124, 255, 0.3);
+            margin-left: 10px;
+            padding-left: 22px;
+        }
+
+        .changelog-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .changelog-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .changelog-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #8b7cff;
+            box-shadow: 0 0 12px rgba(139, 124, 255, 0.8);
+            border: 2px solid #060709;
+        }
+
+        .changelog-date {
+            font-size: 0.83rem;
+            color: #8b7cff;
+            font-weight: bold;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .changelog-desc {
+            font-size: 0.94rem;
+            color: #94a3b8;
+        }
+
+        /* TOMBOL DETAIL LAINNYA */
+        .changelog-btn-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .detail-btn {
+            background: transparent;
+            color: #8b7cff;
+            border: 1px solid rgba(139, 124, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .detail-btn:hover {
+            background: rgba(139, 124, 255, 0.1);
+            border-color: #8b7cff;
+            box-shadow: 0 0 12px rgba(139, 124, 255, 0.2);
+        }
+
+        /* POPUP MODAL STYLING */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 7, 9, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-card {
+            background: linear-gradient(145deg, #12141c, #0e1017);
+            border: 1px solid rgba(139, 124, 255, 0.4);
+            border-radius: 18px;
+            width: 100%;
+            max-width: 550px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            animation: slideUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUpModal {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(139, 124, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #8b7cff;
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .social-btn {
             display: inline-block;
-            padding: 10px 20px;
-            background: #151720;
+            padding: 11px 22px;
+            background: #12141c;
             color: #e2e8f0;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid #1f2430;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         .social-btn:hover {
             border-color: #8b7cff;
             color: #8b7cff;
-            transform: translateY(-2px);
+            background: rgba(139, 124, 255, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 124, 255, 0.15);
         }
 
         footer {
             text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid #1f2430;
+            padding: 50px 0;
+            border-top: 1px solid rgba(139, 124, 255, 0.1);
             color: #94a3b8;
             font-size: 0.9rem;
+        }
+
+        .update-info {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
@@ -246,7 +446,7 @@
             }
 
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
             }
 
             nav {
@@ -264,7 +464,6 @@
 
     <div class="container">
 
-        <!-- Header / Navbar -->
         <header>
             <a href="#" class="logo">UPAYY.</a>
             <nav>
@@ -272,14 +471,14 @@
                 <a href="#mikir">Refleksi</a>
                 <a href="#minat">Minat</a>
                 <a href="#perjalanan">Perjalanan</a>
+                <a href="#changelog">Log</a>
                 <a href="#kontak">Kontak</a>
             </nav>
         </header>
 
-        <!-- Hero Section -->
         <section class="hero-grid">
             <div>
-                <p class="tagline">MASIH BELAJAR, MASIH PENASARAN.</p>
+                <span class="tagline">MASIH BELAJAR, MASIH PENASARAN.</span>
                 <h1>
                     Gue Upayy.<br>
                     <span class="purple">Orang yang banyak mikir.</span>
@@ -290,10 +489,12 @@
             </div>
             <div>
                 <img src="Upayy.jpg" alt="Foto Profil Upayy" class="profile-img">
+                <div class="card quote-card" id="quoteBox" onclick="gantiQuote()" title="Klik untuk mengganti quote!">
+                    <p class="quote-text" id="quoteText">"Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir."</p>
+                    <span class="quote-hint">💡 Klik atau tunggu 10 detik</span>
+                </div>
             </div>
         </section>
-
-        <!-- 1. Tentang Gue Section -->
         <section id="tentang">
             <h2>1. Tentang Gue</h2>
             <div class="about-grid">
@@ -317,7 +518,6 @@
             </div>
         </section>
 
-        <!-- 2. Hal yang Sering Bikin Gue Mikir Section -->
         <section id="mikir">
             <h2>2. Hal yang Sering Bikin Gue Mikir</h2>
             <div class="card">
@@ -340,7 +540,6 @@
             </div>
         </section>
 
-        <!-- 3. Yang Gue Suka Section -->
         <section id="minat">
             <h2>3. Bidang Eksplorasi & Minat</h2>
             <div class="minat-grid">
@@ -383,7 +582,6 @@
             </div>
         </section>
 
-        <!-- 4. Cara Gue Berpikir Section -->
         <section>
             <h2>4. Kerangka Berpikir (Principles)</h2>
             <div class="card">
@@ -397,7 +595,6 @@
             </div>
         </section>
 
-        <!-- 5. Perjalanan Section -->
         <section id="perjalanan">
             <h2>5. Perjalanan & Arah Refleksi</h2>
             <div class="journey-grid">
@@ -420,7 +617,32 @@
             </div>
         </section>
 
-        <!-- Footer & Kontak -->
+        <div class="changelog-divider"></div>
+
+        <section id="changelog">
+            <h2>Log Perubahan</h2>
+            <div class="card">
+                <div class="changelog-timeline">
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs.</div>
+                    </div>
+                </div>
+
+                <div class="changelog-btn-container">
+                    <button class="detail-btn" onclick="bukaModal()">Detail Lainnya →</button>
+                </div>
+            </div>
+        </section>
+
         <footer id="kontak">
             <p style="margin-bottom: 15px; font-weight: bold; color: #ffffff;">Mari Berdiskusi & Terhubung</p>
             <div class="social-links">
@@ -430,9 +652,104 @@
                 <a href="mailto:mmuflihmufadhol@gmail.com" class="social-btn">Email</a>
             </div>
             <p>© Upayy — Tetap Penasaran, Tetap Belajar.</p>
+            <p class="update-info">Terakhir diperbarui: 4 Oktober 2026</p>
         </footer>
 
     </div>
+
+    <!-- MODAL POPUP FULL LOG PERUBAHAN -->
+    <div class="modal-overlay" id="changelogModal" onclick="tutupModalDiLuar(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="modal-title">Semua Log Perubahan</span>
+                <button class="modal-close" onclick="tutupModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="changelog-timeline">
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">4 Oktober 2026</div>
+                        <div class="changelog-desc">Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">Oktober 2026</div>
+                        <div class="changelog-desc">Memperbarui tata letak halaman profil, menyelaraskan gaya estetika gelap, serta memperkaya bidang eksplorasi minat.</div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-date">Awal Pengembangan</div>
+                        <div class="changelog-desc">Inisialisasi pembuatan portofolio pribadi "Si Paling Penasaran" dengan fokus pada identitas dan kerangka berpikir.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            "Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir.",
+            "Logika akan membawamu dari titik A ke titik B, tapi rasa penasaran akan membawamu ke mana saja.",
+            "Lebih baik punya banyak pertanyaan namun haus jawaban, daripada merasa tahu segalanya padahal tersesat.",
+            "Kebohongan bisa berkeliling dunia sebelum kebenaran sempat mengenakan sepatunya.",
+            "Dunia ini bukan sekadar hitam dan putih; ada lautan abu-abu tempat analisis yang objektif hidup.",
+            "Jangan pernah menerima sebuah narasi mentah-mentah sebelum kamu membongkar fondasinya.",
+            "Ketenangan pikiran lahir dari kemampuan menerima hal yang tidak bisa diubah dan mengubah yang bisa diperbaiki.",
+            "Teknologi canggih tanpa diimbangi nalar kritis hanya akan melahirkan manusia yang mudah disetir.",
+            "Skeptisisme yang sehat adalah perisai terbaik melawan manipulasi informasi.",
+            "Pikiran yang tertutup itu seperti buku yang terkunci rapat; tidak ada ilmu baru yang bisa masuk.",
+            "Belajar bukan sekadar menghafal fakta, melainkan melatih otak untuk merangkai kepingan teka-teki.",
+            "Hukum diciptakan untuk ketertiban, namun nurani diperlukan agar keadilan tidak kehilangan nyawa.",
+            "Rasa ingin tahu adalah bahan bakar utama bagi mereka yang menolak jalan di tempat.",
+            "Kesalahan terbesar dalam berpikir adalah berasumsi bahwa apa yang tampak benar pasti benar.",
+            "Semakin banyak hal yang gue pelajari, semakin sadar betapa sedikit yang gue ketahui.",
+            "Empati tanpa logika itu rapuh, logika tanpa empati itu dingin.",
+            "Jangan takut pada ketidaktahuan; takutlah pada kepuasan diri yang menghentikan proses belajarmu.",
+            "Sebuah argumen yang kuat dibangun di atas data yang valid, bukan sekadar volume suara yang nyaring.",
+            "Pertanyaan terbaik sering kali tersembunyi di balik hal-hal yang dianggap paling remeh oleh orang lain.",
+            "Tetap penasaran, tetap kritis, dan jangan pernah berhenti mempertanyakan realitas."
+        ];
+
+        let currentIndex = 0;
+        let timer = setInterval(gantiQuote, 10000);
+
+        function gantiQuote() {
+            const quoteTextElement = document.getElementById("quoteText");
+            
+            quoteTextElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % quotes.length;
+                quoteTextElement.textContent = `"${quotes[currentIndex]}"`;
+                quoteTextElement.style.opacity = 1;
+            }, 300);
+
+            clearInterval(timer);
+            timer = setInterval(gantiQuote, 10000);
+        }
+
+        function bukaModal() {
+            document.getElementById("changelogModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function tutupModal() {
+            document.getElementById("changelogModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function tutupModalDiLuar(event) {
+            const modalOverlay = document.getElementById("changelogModal");
+            if (event.target === modalOverlay) {
+                tutupModal();
+            }
+        }
+    </script>
 
 </body>
 
