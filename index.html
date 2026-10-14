@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+< lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upayy — Si Paling Penasaran</title>
+  
+<meta name="description" content="Upayy — pribadi yang masih belajar, masih penasaran, dan terus mengeksplorasi teknologi, hukum, psikologi, serta cara berpikir kritis.">
+
+<meta name="theme-color" content="#060709">
+
+<meta property="og:title" content="Upayy — Si Paling Penasaran">
+<meta property="og:description" content="Biasa aja. Cuma banyak mikir. Tetap belajar, tetap penasaran.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Upayy — Si Paling Penasaran">
+<meta name="twitter:description" content="Tetap belajar, tetap penasaran.">
+
     <style>
         * {
             box-sizing: border-box;
@@ -457,7 +471,7 @@
                 font-size: 0.85rem;
             }
         }
-    </style>
+          </style>
 </head>
 
 <body>
@@ -619,29 +633,20 @@
 
         <div class="changelog-divider"></div>
 
-        <section id="changelog">
-            <h2>Log Perubahan</h2>
-            <div class="card">
-                <div class="changelog-timeline">
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs.</div>
-                    </div>
-                </div>
+        <
+<section id="changelog">
+    <h2>Log Perubahan</h2>
+    <div class="card">
+        <div class="changelog-timeline" id="changelogPreview"></div>
 
-                <div class="changelog-btn-container">
-                    <button class="detail-btn" onclick="bukaModal()">Detail Lainnya →</button>
-                </div>
-            </div>
-        </section>
+        <div class="changelog-btn-container">
+            <button class="detail-btn" onclick="bukaModal()">
+                Detail Lainnya →
+            </button>
+        </div>
+    </div>
+</section>
+
 
         <footer id="kontak">
             <p style="margin-bottom: 15px; font-weight: bold; color: #ffffff;">Mari Berdiskusi & Terhubung</p>
@@ -658,38 +663,22 @@
     </div>
 
     <!-- MODAL POPUP FULL LOG PERUBAHAN -->
-    <div class="modal-overlay" id="changelogModal" onclick="tutupModalDiLuar(event)">
-        <div class="modal-card">
-            <div class="modal-header">
-                <span class="modal-title">Semua Log Perubahan</span>
-                <button class="modal-close" onclick="tutupModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="changelog-timeline">
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">4 Oktober 2026</div>
-                        <div class="changelog-desc">Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">Oktober 2026</div>
-                        <div class="changelog-desc">Memperbarui tata letak halaman profil, menyelaraskan gaya estetika gelap, serta memperkaya bidang eksplorasi minat.</div>
-                    </div>
-                    <div class="changelog-item">
-                        <div class="changelog-date">Awal Pengembangan</div>
-                        <div class="changelog-desc">Inisialisasi pembuatan portofolio pribadi "Si Paling Penasaran" dengan fokus pada identitas dan kerangka berpikir.</div>
-                    </div>
-                </div>
-            </div>
+
+<!-- MODAL POPUP FULL LOG PERUBAHAN -->
+<div class="modal-overlay" id="changelogModal"
+     onclick="tutupModalDiLuar(event)">
+    <div class="modal-card">
+        <div class="modal-header">
+            <span class="modal-title">Semua Log Perubahan</span>
+            <button class="modal-close" onclick="tutupModal()"
+                    aria-label="Tutup popup">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="changelog-timeline" id="changelogFull"></div>
         </div>
     </div>
+</div>
+
 
     <script>
         const quotes = [
@@ -715,23 +704,200 @@
             "Tetap penasaran, tetap kritis, dan jangan pernah berhenti mempertanyakan realitas."
         ];
 
-        let currentIndex = 0;
-        let timer = setInterval(gantiQuote, 10000);
+        
+let currentIndex = 0;
+let quoteTimer = null;
+let quoteChangeTimeout = null;
+let previousFocus = null;
+let previousBodyOverflow = "";
 
-        function gantiQuote() {
-            const quoteTextElement = document.getElementById("quoteText");
-            
-            quoteTextElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % quotes.length;
-                quoteTextElement.textContent = `"${quotes[currentIndex]}"`;
-                quoteTextElement.style.opacity = 1;
-            }, 300);
+// SISTEM KUTIPAN
+function gantiQuote() {
+    const quoteTextElement = document.getElementById("quoteText");
 
-            clearInterval(timer);
-            timer = setInterval(gantiQuote, 10000);
+    if (!quoteTextElement || quotes.length === 0) return;
+
+    clearInterval(quoteTimer);
+    clearTimeout(quoteChangeTimeout);
+
+    quoteTextElement.style.opacity = "0";
+
+    quoteChangeTimeout = setTimeout(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        quoteTextElement.textContent = `"${quotes[currentIndex]}"`;
+        quoteTextElement.style.opacity = "1";
+    }, 300);
+
+    quoteTimer = setInterval(gantiQuote, 10000);
+}
+
+// AMBIL ELEMEN POPUP
+const modalOverlay = document.getElementById("changelogModal");
+const modalCard = modalOverlay?.querySelector(".modal-card");
+const modalCloseButton = modalOverlay?.querySelector(".modal-close");
+
+// ATUR AKSESIBILITAS POPUP
+if (modalOverlay && modalCard) {
+    modalOverlay.setAttribute("role", "dialog");
+    modalOverlay.setAttribute("aria-modal", "true");
+    modalOverlay.setAttribute("aria-hidden", "true");
+
+    const modalTitle = modalOverlay.querySelector(".modal-title");
+
+    if (modalTitle) {
+        modalTitle.id = "changelogModalTitle";
+        modalOverlay.setAttribute(
+            "aria-labelledby",
+            "changelogModalTitle"
+        );
+    }
+
+    if (modalCloseButton) {
+        modalCloseButton.setAttribute("aria-label", "Tutup popup log perubahan");
+    }
+}
+
+// BUKA POPUP
+function bukaModal() {
+    if (!modalOverlay) return;
+
+    previousFocus = document.activeElement;
+    previousBodyOverflow = document.body.style.overflow;
+
+    modalOverlay.style.display = "flex";
+    modalOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    if (modalCloseButton) {
+        modalCloseButton.focus();
+    }
+}
+
+// TUTUP POPUP
+function tutupModal() {
+    if (!modalOverlay) return;
+
+    modalOverlay.style.display = "none";
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = previousBodyOverflow;
+
+    if (previousFocus && typeof previousFocus.focus === "function") {
+        previousFocus.focus();
+    }
+}
+
+// TUTUP JIKA AREA LUAR POPUP DIKLIK
+function tutupModalDiLuar(event) {
+    if (event.target === modalOverlay) {
+        tutupModal();
+    }
+}
+
+// DUKUNGAN KEYBOARD
+document.addEventListener("keydown", function(event) {
+    if (!modalOverlay || modalOverlay.style.display !== "flex") {
+        return;
+    }
+
+    // Tutup popup dengan tombol Escape
+    if (event.key === "Escape") {
+        event.preventDefault();
+        tutupModal();
+        return;
+    }
+
+    // Jaga fokus keyboard tetap di dalam popup
+    if (event.key === "Tab" && modalCard) {
+        const focusableElements = modalCard.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), ' +
+            'select:not([disabled]), textarea:not([disabled]), ' +
+            '[tabindex]:not([tabindex="-1"])'
+        );
+
+        const elements = Array.from(focusableElements)
+            .filter(element => element.getClientRects().length > 0);
+
+        if (elements.length === 0) {
+            event.preventDefault();
+            return;
         }
+
+        const firstElement = elements[0];
+        const lastElement = elements[elements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus();
+        } else if (
+            !event.shiftKey &&
+            document.activeElement === lastElement
+        ) {
+            event.preventDefault();
+            firstElement.focus();
+        }
+    }
+});
+
+// MULAI ROTASI KUTIPAN OTOMATIS
+quoteTimer = setInterval(gantiQuote, 10000);
+
+
+const changelogData = [
+  {
+    date: "14 Oktober 2026",
+    desc: "Menambahkan metadata SEO dan memperbarui deskripsi website."
+},
+  {
+        date: "4 Oktober 2026",
+        desc: "Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama."
+    },
+    {
+        date: "4 Oktober 2026",
+        desc: 'Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.'
+    },
+    {
+        date: "4 Oktober 2026",
+        desc: "Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs."
+    },
+    {
+        date: "Oktober 2026",
+        desc: "Memperbarui tata letak halaman profil, menyelaraskan gaya estetika gelap, serta memperkaya bidang eksplorasi minat."
+    },
+    {
+        date: "Awal Pengembangan",
+        desc: 'Inisialisasi pembuatan portofolio pribadi "Si Paling Penasaran" dengan fokus pada identitas dan kerangka berpikir.'
+    }
+];
+
+function renderChangelog(targetId, data) {
+    const container = document.getElementById(targetId);
+    if (!container) return;
+
+    container.replaceChildren();
+
+    data.forEach(item => {
+        const entry = document.createElement("div");
+        entry.className = "changelog-item";
+
+        const date = document.createElement("div");
+        date.className = "changelog-date";
+        date.textContent = item.date;
+
+        const desc = document.createElement("div");
+        desc.className = "changelog-desc";
+        desc.textContent = item.desc;
+
+        entry.append(date, desc);
+        container.appendChild(entry);
+    });
+}
+
+function renderAllChangelog() {
+    renderChangelog("changelogPreview", changelogData.slice(0, 3));
+    renderChangelog("changelogFull", changelogData);
+}
+
+renderAllChangelog();
 
         function bukaModal() {
             document.getElementById("changelogModal").style.display = "flex";
