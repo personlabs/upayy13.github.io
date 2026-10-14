@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://upayy13.github.io/sitemap.xml
+Sitemap: https://personlabs.github.io/upayy13.github.io/sitemap.xml
