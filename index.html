@@ -1,922 +1,384 @@
 <!DOCTYPE html>
-< lang="id">
-
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upayy — Si Paling Penasaran</title>
-  
-<meta name="description" content="Upayy — pribadi yang masih belajar, masih penasaran, dan terus mengeksplorasi teknologi, hukum, psikologi, serta cara berpikir kritis.">
-
-<meta name="theme-color" content="#060709">
-
-<meta property="og:title" content="Upayy — Si Paling Penasaran">
-<meta property="og:description" content="Biasa aja. Cuma banyak mikir. Tetap belajar, tetap penasaran.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="id_ID">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Upayy — Si Paling Penasaran">
-<meta name="twitter:description" content="Tetap belajar, tetap penasaran.">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #060709;
-            color: #e2e8f0;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            line-height: 1.7;
-            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* HEADER & NAVBAR */
-        header {
-            padding: 18px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(139, 124, 255, 0.1);
-            position: sticky;
-            top: 0;
-            background: rgba(6, 7, 9, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-
-        .logo {
-            font-weight: 800;
-            color: #8b7cff;
-            text-decoration: none;
-            font-size: 1.35rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(139, 124, 255, 0.3);
-        }
-
-        nav {
-            display: flex;
-            gap: 22px;
-        }
-
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.25s ease;
-        }
-
-        nav a:hover {
-            color: #8b7cff;
-            text-shadow: 0 0 10px rgba(139, 124, 255, 0.4);
-        }
-
-        section {
-            padding: 65px 0;
-        }
-
-        h1 {
-            font-size: 2.9rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-weight: 800;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 24px;
-            color: #ffffff;
-            border-bottom: 2px solid rgba(139, 124, 255, 0.2);
-            padding-bottom: 12px;
-            display: inline-block;
-        }
-
-        .purple {
-            color: #8b7cff;
-        }
-
-        .tagline {
-            letter-spacing: 2.5px;
-            font-size: 0.82rem;
-            color: #8b7cff;
-            font-weight: bold;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            display: inline-block;
-            background: rgba(139, 124, 255, 0.1);
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(139, 124, 255, 0.2);
-        }
-
-        .card {
-            background: linear-gradient(145deg, #12141c, #0e1017);
-            padding: 28px;
-            margin: 18px 0;
-            border-radius: 18px;
-            border: 1px solid #1f2430;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(139, 124, 255, 0.5);
-            box-shadow: 0 8px 30px rgba(139, 124, 255, 0.12);
-        }
-
-        /* STYLING QUOTES INTERAKTIF DI BAWAH FOTO */
-        .quote-card {
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border-left: 4px solid #8b7cff;
-            user-select: none;
-            margin-top: 15px;
-            padding: 18px 20px;
-        }
-
-        .quote-card:active {
-            transform: scale(0.98);
-        }
-
-        .quote-text {
-            font-size: 0.95rem;
-            color: #ffffff;
-            font-style: italic;
-            margin-bottom: 6px;
-            transition: opacity 0.4s ease;
-        }
-
-        .quote-hint {
-            font-size: 0.72rem;
-            color: #64748b;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            object-position: top center;
-            border-radius: 18px;
-            border: 2px solid rgba(139, 124, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(139, 124, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.02);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 310px;
-            gap: 45px;
-            align-items: center;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 35px;
-            align-items: start;
-        }
-
-        .minat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-        }
-
-        .minat-grid .card {
-            margin: 0;
-        }
-
-        .minat-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .minat-desc {
-            font-size: 0.93rem;
-            color: #94a3b8;
-            line-height: 1.65;
-        }
-
-        .journey-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-
-        .journey-list {
-            list-style: none;
-            margin-top: 12px;
-        }
-
-        .journey-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        .journey-list li::before {
-            content: "•";
-            color: #8b7cff;
-            font-weight: bold;
-            font-size: 1.4rem;
-            position: absolute;
-            left: 0;
-            top: -3px;
-        }
-
-        .changelog-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(139, 124, 255, 0.3), transparent);
-            margin: 20px 0 10px 0;
-        }
-
-        .changelog-timeline {
-            border-left: 2px solid rgba(139, 124, 255, 0.3);
-            margin-left: 10px;
-            padding-left: 22px;
-        }
-
-        .changelog-item {
-            position: relative;
-            margin-bottom: 28px;
-        }
-
-        .changelog-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .changelog-item::before {
-            content: "";
-            position: absolute;
-            left: -29px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #8b7cff;
-            box-shadow: 0 0 12px rgba(139, 124, 255, 0.8);
-            border: 2px solid #060709;
-        }
-
-        .changelog-date {
-            font-size: 0.83rem;
-            color: #8b7cff;
-            font-weight: bold;
-            letter-spacing: 1.2px;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
-
-        .changelog-desc {
-            font-size: 0.94rem;
-            color: #94a3b8;
-        }
-
-        /* TOMBOL DETAIL LAINNYA */
-        .changelog-btn-container {
-            margin-top: 20px;
-            text-align: right;
-        }
-
-        .detail-btn {
-            background: transparent;
-            color: #8b7cff;
-            border: 1px solid rgba(139, 124, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .detail-btn:hover {
-            background: rgba(139, 124, 255, 0.1);
-            border-color: #8b7cff;
-            box-shadow: 0 0 12px rgba(139, 124, 255, 0.2);
-        }
-
-        /* POPUP MODAL STYLING */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(6, 7, 9, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            animation: fadeInModal 0.3s ease;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-card {
-            background: linear-gradient(145deg, #12141c, #0e1017);
-            border: 1px solid rgba(139, 124, 255, 0.4);
-            border-radius: 18px;
-            width: 100%;
-            max-width: 550px;
-            max-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            animation: slideUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideUpModal {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid rgba(139, 124, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 1.2rem;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .modal-close:hover {
-            color: #8b7cff;
-        }
-
-        .modal-body {
-            padding: 24px;
-            overflow-y: auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: inline-block;
-            padding: 11px 22px;
-            background: #12141c;
-            color: #e2e8f0;
-            text-decoration: none;
-            border-radius: 10px;
-            border: 1px solid #1f2430;
-            font-size: 0.92rem;
-            font-weight: 500;
-            transition: all 0.25s ease;
-        }
-
-        .social-btn:hover {
-            border-color: #8b7cff;
-            color: #8b7cff;
-            background: rgba(139, 124, 255, 0.05);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(139, 124, 255, 0.15);
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid rgba(139, 124, 255, 0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .update-info {
-            font-size: 0.82rem;
-            color: #64748b;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-grid, .about-grid, .journey-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 2.3rem;
-            }
-
-            nav {
-                gap: 12px;
-            }
-
-            nav a {
-                font-size: 0.85rem;
-            }
-        }
-          </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080910">
+  <meta name="description" content="UPAYY — masih belajar, masih penasaran. Ruang personal untuk pemikiran, eksplorasi, teknologi, dan karya.">
+  <meta property="og:title" content="UPAYY — Sipenasaran">
+  <meta property="og:description" content="Tetap belajar. Tetap mempertanyakan. Terus berkembang.">
+  <meta property="og:type" content="website">
+  <title>UPAYY — SIPENASARAN</title>
+  <style>
+    :root{--bg:#080910;--panel:#10121d;--panel2:#141725;--text:#f3f3fa;--muted:#a0a4b8;--dim:#6f748b;--line:rgba(164,145,255,.17);--violet:#a18aff;--violet2:#7658e8;--cyan:#82d9e8;--max:1120px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 8%,rgba(118,88,232,.13),transparent 34%),radial-gradient(ellipse at 90% 48%,rgba(74,120,180,.08),transparent 35%)}
+    a{color:inherit}
+    button{font:inherit}
+    .shell{width:min(var(--max),calc(100% - 44px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(8,9,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-wrap{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{text-decoration:none;font-weight:900;letter-spacing:2px;font-size:1.25rem;color:#fff}
+    .brand span{color:var(--violet)}
+    .nav{display:flex;gap:22px;align-items:center;overflow-x:auto;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav a{text-decoration:none;white-space:nowrap;color:var(--muted);font-size:.86rem;transition:color .2s}
+    .nav a:hover,.nav a:focus-visible{color:var(--violet)}
+    .menu-toggle{display:none;border:1px solid var(--line);background:var(--panel);color:white;border-radius:10px;padding:8px 11px}
+    section{padding:92px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--violet);font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:22px;height:1px;background:var(--violet)}
+    h1{font-size:clamp(2.7rem,7vw,5.4rem);line-height:1.04;letter-spacing:-.055em;margin:20px 0}
+    h2{font-size:clamp(1.8rem,4vw,2.65rem);line-height:1.15;letter-spacing:-.035em;margin:12px 0 14px}
+    h3{font-size:1.08rem;line-height:1.35}
+    p{color:var(--muted)}
+    .gradient{background:linear-gradient(100deg,#fff 5%,#b8a8ff 55%,#82d9e8);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-head{max-width:680px;margin-bottom:34px}
+    .section-head p{max-width:620px}
+    .hero{min-height:calc(88vh - 72px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:55px;padding-top:75px;padding-bottom:75px}
+    .hero-copy>p{max-width:610px;font-size:1.05rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:750;font-size:.9rem;border:1px solid var(--line);transition:transform .2s,border-color .2s,background .2s}
+    .btn:hover{transform:translateY(-2px);border-color:var(--violet)}
+    .btn-primary{background:linear-gradient(110deg,#8065e9,#a18aff);color:#090910;border:0}
+    .btn-quiet{background:rgba(255,255,255,.025);color:var(--text)}
+    .hero-visual{position:relative;max-width:390px;width:100%;justify-self:end}
+    .hero-visual:before{content:"";position:absolute;inset:12% -8%;background:rgba(133,103,255,.18);filter:blur(55px);border-radius:50%;z-index:-1}
+    .portrait-frame{position:relative;padding:10px;border:1px solid rgba(161,138,255,.35);border-radius:25px;background:linear-gradient(145deg,rgba(161,138,255,.13),rgba(255,255,255,.015));box-shadow:0 25px 80px rgba(0,0,0,.35)}
+    .portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;border-radius:17px;cursor:zoom-in}
+    .portrait-caption{display:flex;justify-content:space-between;gap:10px;padding:13px 5px 2px;font-size:.78rem;color:var(--muted)}
+    .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7ee0b1;margin-right:7px;box-shadow:0 0 10px #7ee0b1}
+    .quote{margin-top:16px;padding:17px 19px;border:1px solid var(--line);border-left:3px solid var(--violet);border-radius:14px;background:rgba(16,18,29,.85);cursor:pointer}
+    .quote p{color:#e8e5f6;font-style:italic;font-size:.94rem}
+    .quote small{display:block;margin-top:8px;color:var(--dim);font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+    .panel{background:linear-gradient(145deg,rgba(20,23,37,.94),rgba(13,15,24,.94));border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 35px rgba(0,0,0,.14)}
+    .about-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:28px;align-items:stretch}
+    .about-photo{width:100%;height:100%;min-height:300px;max-height:430px;object-fit:cover;object-position:top;border-radius:14px}
+    .about-copy p+p{margin-top:14px}
+    .thoughts{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .thought-card{min-height:205px}
+    .number{color:var(--violet);font-size:.76rem;font-weight:800;letter-spacing:1.5px}
+    .thought-card h3{margin:14px 0 9px}
+    .thought-card p,.interest-card p,.project-card p{font-size:.9rem}
+    .interest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .interest-card{min-height:175px}
+    .interest-icon{font-size:1.35rem;margin-bottom:12px;display:block}
+    .interest-card h3{margin-bottom:8px}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .principle{border-top:2px solid var(--violet);padding:20px 18px;background:rgba(255,255,255,.025);border-radius:0 0 14px 14px}
+    .principle h3{margin-bottom:8px}
+    .journey{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .journey ul{list-style:none;margin-top:15px}
+    .journey li{position:relative;padding-left:19px;margin:10px 0;color:var(--muted);font-size:.92rem}
+    .journey li:before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project-label{display:inline-block;color:var(--violet);font-size:.72rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px}
+    .project-card h3{margin-bottom:9px}
+    .project-card .project-foot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;color:var(--dim)}
+    .timeline{border-left:1px solid rgba(161,138,255,.4);padding-left:22px;margin-left:8px}
+    .timeline-item{position:relative;margin:0 0 23px}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-item:before{content:"";position:absolute;left:-28px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--violet);box-shadow:0 0 12px rgba(161,138,255,.6)}
+    .timeline-date{color:var(--violet);font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    .timeline-desc{font-size:.9rem;margin-top:4px}
+    .align-right{text-align:right;margin-top:18px}
+    .text-button{background:transparent;border:1px solid var(--line);color:var(--violet);padding:9px 14px;border-radius:9px;cursor:pointer}
+    footer{padding:55px 0 35px;border-top:1px solid var(--line);text-align:center}
+    .socials{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:22px 0}
+    .socials a{border:1px solid var(--line);border-radius:10px;padding:9px 15px;text-decoration:none;color:var(--muted);font-size:.85rem}
+    .socials a:hover{border-color:var(--violet);color:white}
+    .fine{font-size:.76rem;color:var(--dim);margin-top:12px}
+    .modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(3,4,9,.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:18px}
+    .modal.open{display:flex}
+    .modal-box{width:min(600px,100%);max-height:82vh;overflow:auto;background:#11131e;border:1px solid var(--line);border-radius:18px;padding:22px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .close{background:transparent;color:white;border:0;font-size:1.7rem;cursor:pointer;padding:0 5px}
+    .lightbox-img{max-width:min(92vw,650px);max-height:82vh;object-fit:contain;border-radius:12px}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* INTERAKTIF: KARTU PROFIL 3D RINGAN */
+    .portrait-frame{transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out}
+    .portrait-frame:after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.09);border-radius:17px;pointer-events:none}
+    .portrait-float{position:absolute;right:-17px;top:28px;z-index:2;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(10,11,19,.92);font-size:.72rem;color:#d9d2ff;box-shadow:0 10px 28px rgba(0,0,0,.3);transform:translateZ(35px)}
+    .portrait-orbit{position:absolute;inset:-17px;border:1px solid rgba(161,138,255,.22);border-radius:30px;pointer-events:none;transform:translateZ(-12px)}
+    .portrait-orbit:before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);top:16%;right:10%}
+    .portrait-caption span:last-child{letter-spacing:1px}
+    /* KARTU PROYEK INTERAKTIF */
+    .project-card{position:relative;overflow:hidden;transition:transform .22s,border-color .22s}
+    .project-card:hover{transform:translateY(-4px);border-color:rgba(161,138,255,.48)}
+    .project-art{height:170px;border-radius:12px;margin:-5px -5px 19px;overflow:hidden;position:relative;background:#17172b;border:1px solid rgba(255,255,255,.06)}
+    .project-art:before,.project-art:after{content:"";position:absolute;border-radius:50%;filter:blur(1px)}
+    .art-aspirasi{background:radial-gradient(circle at 78% 25%,rgba(135,111,255,.5),transparent 25%),linear-gradient(135deg,#171a32,#0b0e18)}
+    .art-aspirasi:before{width:170px;height:170px;right:14%;top:15px;border:1px solid rgba(177,160,255,.55);box-shadow:0 0 0 16px rgba(142,117,255,.06),0 0 0 34px rgba(142,117,255,.04)}
+    .art-aspirasi:after{width:70%;height:1px;left:15%;top:50%;background:linear-gradient(90deg,transparent,#b3a1ff,transparent);border-radius:0}
+    .art-mobile{background:radial-gradient(circle at 50% 55%,rgba(90,206,220,.2),transparent 40%),linear-gradient(135deg,#111e2c,#10101d)}
+    .phone-mock{position:absolute;width:76px;height:138px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-7deg);border:2px solid #9e9db9;border-radius:15px;background:linear-gradient(#242b43 0 18%,#151a2b 18%);box-shadow:18px 10px 35px rgba(0,0,0,.4)}
+    .phone-mock:before{content:"";position:absolute;left:10px;right:10px;top:34px;height:7px;border-radius:4px;background:#9a83ff;box-shadow:0 17px 0 #343b57,0 34px 0 #343b57,0 51px 0 #343b57}
+    .art-label{position:absolute;left:17px;bottom:15px;color:rgba(255,255,255,.78);font-size:.68rem;letter-spacing:2px;font-weight:800}
+    .project-open{margin-top:16px;background:transparent;border:1px solid var(--line);color:var(--violet);padding:9px 13px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:700}
+    .project-open:hover{background:rgba(161,138,255,.09)}
+    .project-modal-content p{margin:12px 0}
+    .project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+    .project-tags span{border:1px solid var(--line);border-radius:20px;padding:5px 9px;color:#d3cafa;font-size:.72rem}
+    @media(prefers-reduced-motion:reduce){.portrait-frame,.project-card{transition:none}}
+
+    @media(max-width:850px){.hero{gap:30px}.thoughts,.principles{grid-template-columns:1fr 1fr}.interest-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:650px){
+      .shell{width:min(100% - 32px,var(--max))}
+      .nav-wrap{min-height:64px;align-items:center}
+      .menu-toggle{display:block}
+      .nav{display:none;position:absolute;left:0;right:0;top:64px;padding:14px 16px 18px;background:#0b0c15;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+      .nav.open{display:flex}
+      .nav a{padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.045)}
+      section{padding:68px 0}
+      .hero{min-height:0;grid-template-columns:1fr;padding-top:58px;gap:30px}
+      .hero-copy>p{font-size:.98rem}
+      .hero-visual{justify-self:center;max-width:330px}
+      h1{font-size:clamp(2.65rem,13vw,4.1rem)}
+      .about-grid,.journey,.project-grid{grid-template-columns:1fr}
+      .about-photo{height:290px;min-height:0}
+      .thoughts,.interest-grid,.principles{grid-template-columns:1fr}
+      .panel{padding:21px}
+      .thought-card,.interest-card{min-height:0}
+      .hero-actions .btn{flex:1}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
-
 <body>
-
-    <div class="container">
-
-        <header>
-            <a href="#" class="logo">UPAYY.</a>
-            <nav>
-                <a href="#tentang">Tentang</a>
-                <a href="#mikir">Refleksi</a>
-                <a href="#minat">Minat</a>
-                <a href="#perjalanan">Perjalanan</a>
-                <a href="#changelog">Log</a>
-                <a href="#kontak">Kontak</a>
-            </nav>
-        </header>
-
-        <section class="hero-grid">
-            <div>
-                <span class="tagline">MASIH BELAJAR, MASIH PENASARAN.</span>
-                <h1>
-                    Gue Upayy.<br>
-                    <span class="purple">Orang yang banyak mikir.</span>
-                </h1>
-                <p style="color: #94a3b8; font-size: 1.05rem;">
-                    Bagi gue, dunia ini terlalu menarik untuk sekadar dilewati tanpa dipertanyakan. Gue selalu terdorong untuk membongkar ide, mencari akar masalah, dan memahami struktur di balik setiap fenomena.
-                </p>
-            </div>
-            <div>
-                <img src="Upayy.jpg" alt="Foto Profil Upayy" class="profile-img">
-                <div class="card quote-card" id="quoteBox" onclick="gantiQuote()" title="Klik untuk mengganti quote!">
-                    <p class="quote-text" id="quoteText">"Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir."</p>
-                    <span class="quote-hint">💡 Klik atau tunggu 10 detik</span>
-                </div>
-            </div>
-        </section>
-        <section id="tentang">
-            <h2>1. Tentang Gue</h2>
-            <div class="about-grid">
-                <div>
-                    <img src="1790917895987.jpg" alt="Foto Upayy Belajar" class="profile-img">
-                </div>
-                <div class="card" style="margin: 0;">
-                    <p style="margin-bottom: 15px;">
-                        Gue adalah seorang penjelajah gagasan. Rasa penasaran gue bukan sekadar dorongan impulsif untuk tahu hal baru, melainkan metode untuk memahami dunia. Gue senang mendalami subjek yang berseberangan—dari presisi logika kode pemrograman hingga kompleksitas interpretasi norma hukum.
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        Gue tidak mudah puas dengan jawaban permukaan atau narasi yang sudah jadi. Ketika dihadapkan pada suatu informasi, gue terbiasa melakukan dekonstruksi: membedah asumsi, memeriksa validitas data, dan melihat dari berbagai sudut pandang sebelum mengambil kesimpulan.
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        Prinsip utama yang gue pegang adalah **keseimbangan antara empati dan logika**. Logika tanpa empati menjadi dingin dan kaku, sementara empati tanpa logika rentan terhadap bias dan manipulasi.
-                    </p>
-                    <p>
-                        Bagi gue, proses belajar tidak pernah selesai. Selama masih ada pertanyaan yang belum terjawab, di situlah alasan gue untuk terus bergerak maju.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="mikir">
-            <h2>2. Hal yang Sering Bikin Gue Mikir</h2>
-            <div class="card">
-                <p><strong class="purple" style="font-size: 1.05rem;">Kenapa orang gampang percaya opini tanpa mencari fakta?</strong></p>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 8px;">
-                    Di era banjir informasi, fenomena *echo chamber* dan *confirmation bias* makin marak. Banyak orang lebih memilih kenyamanan emosional yang mendukung keyakinan awal mereka ketimbang menghadapi fakta keras yang memicu disonansi kognitif.
-                </p>
-            </div>
-            <div class="card">
-                <p><strong class="purple" style="font-size: 1.05rem;">Bagaimana teknologi memengaruhi kemandirian berpikir kita?</strong></p>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 8px;">
-                    Otomasi dan kecerdasan buatan memberikan kemudahan luar biasa. Namun, jika kita terlalu bergantung pada jawaban instan tanpa memahami prosesnya, kita berisiko mengikis kemampuan analisis kritis dan kreativitas murni.
-                </p>
-            </div>
-            <div class="card">
-                <p><strong class="purple" style="font-size: 1.05rem;">Di mana batas antara Keadilan Hukum dan Kepastian Hukum?</strong></p>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 8px;">
-                    Aturan yang tertulis di atas kertas sering kali bentrok dengan realitas sosial yang dinamis. Bikin gue berpikir: bagaimana cara membangun sistem yang adil tanpa merusak ketertiban umum?
-                </p>
-            </div>
-        </section>
-
-        <section id="minat">
-            <h2>3. Bidang Eksplorasi & Minat</h2>
-            <div class="minat-grid">
-                <div class="card">
-                    <div class="minat-title">💻 Teknologi & Sistem</div>
-                    <div class="minat-desc">
-                        Tertarik pada arsitektur perangkat lunak, logika algoritma, pemecahan masalah (problem-solving), serta bagaimana sistem digital dapat diefisiensikan untuk mempermudah hidup manusia.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="minat-title">⚖️ Hukum & Yurisprudensi</div>
-                    <div class="minat-desc">
-                        Mempelajari konstruksi penalaran hukum, analisis pasal, tata kelola regulasi, serta teknik penyusunan argumentasi yang berdasar pada pembuktian kontekstual.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="minat-title">🧠 Psikologi Kognitif & Filsafat</div>
-                    <div class="minat-desc">
-                        Menganalisis mekanisme pengambilan keputusan, filsafat Stoikisme, logika berfikir (*logical fallacies*), serta pola perilaku manusia saat berinteraksi sosial.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="minat-title">🧬 Anatomi & Biologi Sistem</div>
-                    <div class="minat-desc">
-                        Mengkaji bagaimana setiap bagian tubuh bekerja selayaknya mesin biologis yang saling terintegrasi—dari sinyal saraf hingga regulasi mekanis fisiologis.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="minat-title">📚 Pedagogi & Edukasi</div>
-                    <div class="minat-desc">
-                        Fokus pada metode penyampaian materi kompleks menjadi sederhana, pembuatan kerangka belajar mandiri (*framework*), dan pemantik daya kritis murid.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="minat-title">🎨 Desain Sistem & UX</div>
-                    <div class="minat-desc">
-                        Memahami bagaimana struktur visual dan alur antarmuka memengaruhi psikologi pengguna dalam mengoperasikan sebuah platform digital secara intuitif.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>4. Kerangka Berpikir (Principles)</h2>
-            <div class="card">
-                <p><strong class="purple">Prinsip Pertanyaan Pertama:</strong> Gue tidak cuma menerima *apa* yang terjadi, tapi selalu menggali *kenapa* dan *bagaimana* hal itu bisa terjadi.</p>
-            </div>
-            <div class="card">
-                <p><strong class="purple">Harmoni Logika & Emosi:</strong> Menggunakan logika untuk menavigasi masalah, dan empati untuk memahami konteks manusia di dalamnya.</p>
-            </div>
-            <div class="card">
-                <p><strong class="purple">Skeptisisme Sehat:</strong> Menguji setiap asumsi—termasuk gagasan gue sendiri—sebelum menjadikannya sebuah pegangan atau keputusan.</p>
-            </div>
-        </section>
-
-        <section id="perjalanan">
-            <h2>5. Perjalanan & Arah Refleksi</h2>
-            <div class="journey-grid">
-                <div class="card">
-                    <h3 class="purple" style="margin-bottom: 12px;">Fase Sekarang (Fase Eksplorasi)</h3>
-                    <ul class="journey-list">
-                        <li>Memperdalam fondasi logika pemrograman dan pemahaman hukum.</li>
-                        <li>Mengamati pola interaksi masyarakat dalam menyerap informasi digital.</li>
-                        <li>Melatih diri untuk konsisten berpikir kritis dan objektif.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="purple" style="margin-bottom: 12px;">Fase Nanti (Fase Kontribusi)</h3>
-                    <ul class="journey-list">
-                        <li>Menciptakan karya atau solusi yang menghubungkan teknologi dan pemikiran kritis.</li>
-                        <li>Membantu orang lain melihat persoalan secara lebih jernih tanpa bias.</li>
-                        <li>Terus berkembang sebagai individu yang relevan tanpa kehilangan nilai diri.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <div class="changelog-divider"></div>
-
-        <
-<section id="changelog">
-    <h2>Log Perubahan</h2>
-    <div class="card">
-        <div class="changelog-timeline" id="changelogPreview"></div>
-
-        <div class="changelog-btn-container">
-            <button class="detail-btn" onclick="bukaModal()">
-                Detail Lainnya →
-            </button>
-        </div>
+  <div class="topbar">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#beranda">UPAYY<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Buka navigasi">☰</button>
+      <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a><a href="#refleksi">Refleksi</a><a href="#minat">Eksplorasi</a><a href="#proyek">Proyek</a><a href="#perjalanan">Perjalanan</a><a href="#log">Log</a><a href="#kontak">Kontak</a>
+      </nav>
     </div>
-</section>
+  </div>
 
-
-        <footer id="kontak">
-            <p style="margin-bottom: 15px; font-weight: bold; color: #ffffff;">Mari Berdiskusi & Terhubung</p>
-            <div class="social-links">
-                <a href="https://wa.me/6283179558141" target="_blank" class="social-btn">WhatsApp</a>
-                <a href="https://www.tiktok.com/@upayylahpokoknya?_r=1&_t=ZS-9ADAuwbNGhG" target="_blank" class="social-btn">TikTok</a>
-                <a href="https://www.instagram.com/upayy_banyaktanya?stkn=MTRpbmVqem1xMjcycw==" target="_blank" class="social-btn">Instagram</a>
-                <a href="mailto:mmuflihmufadhol@gmail.com" class="social-btn">Email</a>
-            </div>
-            <p>© Upayy — Tetap Penasaran, Tetap Belajar.</p>
-            <p class="update-info">Terakhir diperbarui: 4 Oktober 2026</p>
-        </footer>
-
-    </div>
-
-    <!-- MODAL POPUP FULL LOG PERUBAHAN -->
-
-<!-- MODAL POPUP FULL LOG PERUBAHAN -->
-<div class="modal-overlay" id="changelogModal"
-     onclick="tutupModalDiLuar(event)">
-    <div class="modal-card">
-        <div class="modal-header">
-            <span class="modal-title">Semua Log Perubahan</span>
-            <button class="modal-close" onclick="tutupModal()"
-                    aria-label="Tutup popup">&times;</button>
+  <main class="shell">
+    <section class="hero" id="beranda">
+      <div class="hero-copy">
+        <span class="eyebrow">Masih belajar, masih penasaran</span>
+        <h1>Gue Upayy.<br><span class="gradient">Sipenasaran.</span></h1>
+        <p>Bagi gue, dunia ini terlalu menarik untuk sekadar dilewati tanpa dipertanyakan. Gue terdorong untuk membongkar ide, mencari akar masalah, dan memahami struktur di balik setiap fenomena.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyek">Jelajahi karya <span>↗</span></a>
+          <a class="btn btn-quiet" href="#tentang">Kenali gue</a>
         </div>
-        <div class="modal-body">
-            <div class="changelog-timeline" id="changelogFull"></div>
+      </div>
+      <div class="hero-visual">
+        <div class="portrait-frame" id="profileTilt">
+          <div class="portrait-orbit"></div><span class="portrait-float">CURIOUS MIND / 001</span>
+          <img class="portrait zoomable" src="Upayy.jpg" alt="Foto profil Upayy" loading="eager">
+          <div class="portrait-caption"><span><i class="status-dot"></i>Dalam proses berkembang</span><span>01 / PROFILE</span></div>
         </div>
+        <div class="quote" id="quoteBox" role="button" tabindex="0" aria-label="Ganti kutipan">
+          <p id="quoteText">“Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir.”</p>
+          <small>✦ Klik untuk kutipan berikutnya</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="section-head reveal"><span class="eyebrow">01 / Tentang gue</span><h2>Rasa ingin tahu sebagai <span class="gradient">cara memahami dunia.</span></h2><p>Bukan tentang mengetahui semuanya, melainkan tentang terus bersedia belajar.</p></div>
+      <div class="about-grid reveal">
+        <img class="about-photo zoomable" src="1790917895987.jpg" alt="Upayy sedang belajar" loading="lazy">
+        <div class="panel about-copy">
+          <p>Gue adalah seorang penjelajah gagasan. Rasa penasaran gue bukan sekadar dorongan impulsif untuk tahu hal baru, melainkan metode untuk memahami dunia. Gue senang mendalami subjek yang berseberangan—dari presisi logika kode pemrograman hingga kompleksitas interpretasi norma hukum.</p>
+          <p>Gue tidak mudah puas dengan jawaban permukaan atau narasi yang sudah jadi. Ketika dihadapkan pada suatu informasi, gue terbiasa membedah asumsi, memeriksa validitas data, dan melihat dari berbagai sudut pandang sebelum mengambil kesimpulan.</p>
+          <p>Prinsip utama yang gue pegang adalah <strong style="color:#fff">keseimbangan antara empati dan logika.</strong> Logika tanpa empati menjadi dingin dan kaku, sementara empati tanpa logika rentan terhadap bias.</p>
+          <p>Bagi gue, proses belajar tidak pernah selesai. Selama masih ada pertanyaan yang belum terjawab, di situlah alasan gue untuk terus bergerak maju.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="refleksi">
+      <div class="section-head reveal"><span class="eyebrow">02 / Ruang refleksi</span><h2>Hal yang sering bikin gue <span class="gradient">mikir.</span></h2><p>Pertanyaan yang mendorong gue melihat sesuatu lebih dalam dari permukaannya.</p></div>
+      <div class="thoughts">
+        <article class="panel thought-card reveal"><span class="number">THOUGHT / 001</span><h3>Kenapa orang gampang percaya opini tanpa mencari fakta?</h3><p>Di era banjir informasi, echo chamber dan confirmation bias membuat sebagian orang lebih nyaman dengan keyakinan awal daripada menghadapi fakta yang menantangnya.</p></article>
+        <article class="panel thought-card reveal"><span class="number">THOUGHT / 002</span><h3>Bagaimana teknologi memengaruhi kemandirian berpikir?</h3><p>AI dan otomasi memberi kemudahan luar biasa. Namun, ketergantungan pada jawaban instan tanpa memahami prosesnya dapat melemahkan analisis kritis.</p></article>
+        <article class="panel thought-card reveal"><span class="number">THOUGHT / 003</span><h3>Di mana batas keadilan dan kepastian hukum?</h3><p>Aturan tertulis dapat berhadapan dengan realitas sosial yang dinamis. Tantangannya adalah membangun sistem yang adil tanpa mengabaikan ketertiban.</p></article>
+      </div>
+    </section>
+
+    <section id="minat">
+      <div class="section-head reveal"><span class="eyebrow">03 / Bidang eksplorasi</span><h2>Hal-hal yang sedang <span class="gradient">gue dalami.</span></h2><p>Ruang belajar yang terus berkembang seiring pertanyaan dan pengalaman baru.</p></div>
+      <div class="interest-grid">
+        <article class="panel interest-card reveal"><span class="interest-icon">⌘</span><h3>Teknologi & Sistem</h3><p>Arsitektur perangkat lunak, logika algoritma, problem-solving, dan sistem digital.</p></article>
+        <article class="panel interest-card reveal"><span class="interest-icon">⚖</span><h3>Hukum & Yurisprudensi</h3><p>Penalaran hukum, analisis pasal, tata kelola regulasi, dan argumentasi berbasis bukti.</p></article>
+        <article class="panel interest-card reveal"><span class="interest-icon">◉</span><h3>Psikologi & Filsafat</h3><p>Pengambilan keputusan, Stoikisme, kesalahan berpikir, dan perilaku manusia.</p></article>
+        <article class="panel interest-card reveal"><span class="interest-icon">⌁</span><h3>Anatomi & Biologi</h3><p>Bagaimana sistem tubuh bekerja, dari sinyal saraf hingga regulasi fisiologis.</p></article>
+        <article class="panel interest-card reveal"><span class="interest-icon">▤</span><h3>Pedagogi & Edukasi</h3><p>Menyederhanakan materi kompleks dan membangun kerangka belajar mandiri.</p></article>
+        <article class="panel interest-card reveal"><span class="interest-icon">◇</span><h3>Desain Sistem & UX</h3><p>Struktur visual dan alur antarmuka yang membuat teknologi mudah digunakan.</p></article>
+      </div>
+    </section>
+
+    <section id="prinsip">
+      <div class="section-head reveal"><span class="eyebrow">04 / Principles</span><h2>Kerangka berpikir.</h2></div>
+      <div class="principles">
+        <article class="principle reveal"><h3>Pertanyaan pertama</h3><p>Gue tidak cuma menerima apa yang terjadi, tetapi menggali kenapa dan bagaimana hal itu bisa terjadi.</p></article>
+        <article class="principle reveal"><h3>Harmoni logika & emosi</h3><p>Menggunakan logika untuk menavigasi masalah dan empati untuk memahami manusia di dalamnya.</p></article>
+        <article class="principle reveal"><h3>Skeptisisme sehat</h3><p>Menguji setiap asumsi—termasuk gagasan sendiri—sebelum menjadikannya pegangan.</p></article>
+      </div>
+    </section>
+
+    <section id="proyek">
+      <div class="section-head reveal"><span class="eyebrow">05 / Selected work</span><h2>Belajar lewat <span class="gradient">membangun sesuatu.</span></h2><p>Proyek yang menjadi bagian dari proses eksplorasi. Buka detail untuk melihat gambaran, tujuan, dan fokus pengembangannya.</p></div>
+      <div class="project-grid">
+        <article class="panel project-card reveal">
+          <div class="project-art art-aspirasi"><span class="art-label">CLASS / ASPIRATION SYSTEM</span></div>
+          <span class="project-label">Web development · Project</span><h3>Sistem Website Kelas</h3>
+          <p>Website kelas untuk menampung aspirasi dan saran, sekaligus menjadi ruang dokumentasi galeri kelas.</p>
+          <div class="project-foot">Fokus: antarmuka, alur pengguna, dan pengelolaan aspirasi</div>
+          <button class="project-open" data-project="aspirasi">Lihat detail proyek ↗</button>
+        </article>
+        <article class="panel project-card reveal">
+          <div class="project-art art-mobile"><div class="phone-mock"></div><span class="art-label">MOBILE EXPERIENCE</span></div>
+          <span class="project-label">Mobile experience · Project</span><h3>Versi aplikasi website kelas</h3>
+          <p>Eksplorasi agar website kelas dapat diakses dengan lebih praktis melalui perangkat mobile.</p>
+          <div class="project-foot">Fokus: aksesibilitas dan pengalaman pengguna</div>
+          <button class="project-open" data-project="mobile">Lihat detail proyek ↗</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="perjalanan">
+      <div class="section-head reveal"><span class="eyebrow">06 / Journey</span><h2>Perjalanan & arah refleksi.</h2></div>
+      <div class="journey">
+        <article class="panel reveal"><span class="number">FASE SEKARANG</span><h3 style="margin-top:10px">Fase eksplorasi</h3><ul><li>Memperdalam fondasi logika pemrograman dan pemahaman hukum.</li><li>Mengamati pola interaksi masyarakat dalam menyerap informasi digital.</li><li>Melatih konsistensi berpikir kritis dan objektif.</li></ul></article>
+        <article class="panel reveal"><span class="number">ARAH BERIKUTNYA</span><h3 style="margin-top:10px">Fase kontribusi</h3><ul><li>Menciptakan solusi yang menghubungkan teknologi dan pemikiran kritis.</li><li>Membantu orang lain melihat persoalan secara lebih jernih.</li><li>Terus berkembang tanpa kehilangan nilai diri.</li></ul></article>
+      </div>
+    </section>
+
+    <section id="log">
+      <div class="section-head reveal"><span class="eyebrow">07 / Changelog</span><h2>Jejak pengembangan.</h2><p>Catatan kecil tentang bagaimana ruang ini terus berubah.</p></div>
+      <div class="panel reveal"><div class="timeline" id="changelogPreview"></div><div class="align-right"><button class="text-button" id="openLog">Lihat seluruh riwayat ↗</button></div></div>
+    </section>
+  </main>
+
+  <footer id="kontak">
+    <div class="shell">
+      <span class="eyebrow">Let's connect</span><h2>Mari berdiskusi & <span class="gradient">terhubung.</span></h2>
+      <p>Terbuka untuk percakapan, ide, dan kolaborasi.</p>
+      <div class="socials">
+        <a href="https://wa.me/6283179558141" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.tiktok.com/@upayylahpokoknya" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.instagram.com/upayy_banyaktanya" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:mmuflihmufadhol@gmail.com">Email</a>
+      </div>
+      <p class="fine">© <span id="year"></span> UPAYY — Tetap penasaran, tetap belajar.</p>
+      <p class="fine">Terus dibangun, satu pertanyaan dalam satu waktu.</p>
     </div>
-</div>
+  </footer>
 
 
-    <script>
-        const quotes = [
-            "Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir.",
-            "Logika akan membawamu dari titik A ke titik B, tapi rasa penasaran akan membawamu ke mana saja.",
-            "Lebih baik punya banyak pertanyaan namun haus jawaban, daripada merasa tahu segalanya padahal tersesat.",
-            "Kebohongan bisa berkeliling dunia sebelum kebenaran sempat mengenakan sepatunya.",
-            "Dunia ini bukan sekadar hitam dan putih; ada lautan abu-abu tempat analisis yang objektif hidup.",
-            "Jangan pernah menerima sebuah narasi mentah-mentah sebelum kamu membongkar fondasinya.",
-            "Ketenangan pikiran lahir dari kemampuan menerima hal yang tidak bisa diubah dan mengubah yang bisa diperbaiki.",
-            "Teknologi canggih tanpa diimbangi nalar kritis hanya akan melahirkan manusia yang mudah disetir.",
-            "Skeptisisme yang sehat adalah perisai terbaik melawan manipulasi informasi.",
-            "Pikiran yang tertutup itu seperti buku yang terkunci rapat; tidak ada ilmu baru yang bisa masuk.",
-            "Belajar bukan sekadar menghafal fakta, melainkan melatih otak untuk merangkai kepingan teka-teki.",
-            "Hukum diciptakan untuk ketertiban, namun nurani diperlukan agar keadilan tidak kehilangan nyawa.",
-            "Rasa ingin tahu adalah bahan bakar utama bagi mereka yang menolak jalan di tempat.",
-            "Kesalahan terbesar dalam berpikir adalah berasumsi bahwa apa yang tampak benar pasti benar.",
-            "Semakin banyak hal yang gue pelajari, semakin sadar betapa sedikit yang gue ketahui.",
-            "Empati tanpa logika itu rapuh, logika tanpa empati itu dingin.",
-            "Jangan takut pada ketidaktahuan; takutlah pada kepuasan diri yang menghentikan proses belajarmu.",
-            "Sebuah argumen yang kuat dibangun di atas data yang valid, bukan sekadar volume suara yang nyaring.",
-            "Pertanyaan terbaik sering kali tersembunyi di balik hal-hal yang dianggap paling remeh oleh orang lain.",
-            "Tetap penasaran, tetap kritis, dan jangan pernah berhenti mempertanyakan realitas."
-        ];
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <div class="modal-box project-modal-content">
+      <div class="modal-head"><h3 id="projectModalTitle">Detail proyek</h3><button class="close" id="closeProject" aria-label="Tutup">×</button></div>
+      <div id="projectModalBody"></div>
+    </div>
+  </div>
 
-        
-let currentIndex = 0;
-let quoteTimer = null;
-let quoteChangeTimeout = null;
-let previousFocus = null;
-let previousBodyOverflow = "";
+  <div class="modal" id="logModal" role="dialog" aria-modal="true" aria-labelledby="logTitle">
+    <div class="modal-box"><div class="modal-head"><h3 id="logTitle">Semua log perubahan</h3><button class="close" id="closeLog" aria-label="Tutup">×</button></div><div class="timeline" id="changelogFull"></div></div>
+  </div>
+  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Pratinjau foto"><button class="close" id="closeImage" aria-label="Tutup foto" style="position:absolute;top:18px;right:22px;font-size:2rem">×</button><img class="lightbox-img" id="lightboxImg" alt="Pratinjau foto"></div>
 
-// SISTEM KUTIPAN
-function gantiQuote() {
-    const quoteTextElement = document.getElementById("quoteText");
+  <script>
 
-    if (!quoteTextElement || quotes.length === 0) return;
-
-    clearInterval(quoteTimer);
-    clearTimeout(quoteChangeTimeout);
-
-    quoteTextElement.style.opacity = "0";
-
-    quoteChangeTimeout = setTimeout(() => {
-        currentIndex = (currentIndex + 1) % quotes.length;
-        quoteTextElement.textContent = `"${quotes[currentIndex]}"`;
-        quoteTextElement.style.opacity = "1";
-    }, 300);
-
-    quoteTimer = setInterval(gantiQuote, 10000);
-}
-
-// AMBIL ELEMEN POPUP
-const modalOverlay = document.getElementById("changelogModal");
-const modalCard = modalOverlay?.querySelector(".modal-card");
-const modalCloseButton = modalOverlay?.querySelector(".modal-close");
-
-// ATUR AKSESIBILITAS POPUP
-if (modalOverlay && modalCard) {
-    modalOverlay.setAttribute("role", "dialog");
-    modalOverlay.setAttribute("aria-modal", "true");
-    modalOverlay.setAttribute("aria-hidden", "true");
-
-    const modalTitle = modalOverlay.querySelector(".modal-title");
-
-    if (modalTitle) {
-        modalTitle.id = "changelogModalTitle";
-        modalOverlay.setAttribute(
-            "aria-labelledby",
-            "changelogModalTitle"
-        );
+    // KARTU PROFIL: efek tilt hanya untuk pointer mouse, agar sentuhan HP tetap ringan.
+    const profileTilt=document.getElementById('profileTilt');
+    if(profileTilt && window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      profileTilt.addEventListener('pointermove',e=>{
+        const r=profileTilt.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+        profileTilt.style.transform=`perspective(900px) rotateX(${(0.5-y)*5}deg) rotateY(${(x-0.5)*6}deg)`;
+      });
+      profileTilt.addEventListener('pointerleave',()=>profileTilt.style.transform='');
     }
 
-    if (modalCloseButton) {
-        modalCloseButton.setAttribute("aria-label", "Tutup popup log perubahan");
-    }
-}
+    
 
-// BUKA POPUP
-function bukaModal() {
-    if (!modalOverlay) return;
+    // DETAIL PROYEK: konten ditulis sebagai teks aman, bukan HTML dari input pengguna.
+    const projectInfo={
+      aspirasi:{
+        title:'Sistem Website Kelas',
+        description:'Sebuah ruang digital untuk mengumpulkan saran dan aspirasi, serta menyimpan dokumentasi kegiatan kelas. Tujuannya membuat komunikasi kelas lebih terstruktur dan mudah diakses.',
+        focus:['Form aspirasi','Galeri dokumentasi','Pengalaman pengguna','Pengelolaan data']
+      },
+      mobile:{
+        title:'Versi aplikasi website kelas',
+        description:'Pengembangan pengalaman mobile agar fitur website kelas lebih mudah digunakan melalui ponsel. Pendekatannya berfokus pada tampilan responsif dan alur akses yang ringkas.',
+        focus:['Tampilan mobile','Navigasi sederhana','Akses cepat','Konsistensi antarmuka']
+      }
+    };
+    const projectModal=document.getElementById('projectModal');
+    const projectBody=document.getElementById('projectModalBody');
+    document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{
+      const data=projectInfo[button.dataset.project];if(!data)return;
+      document.getElementById('projectModalTitle').textContent=data.title;
+      projectBody.replaceChildren();
+      const paragraph=document.createElement('p');paragraph.textContent=data.description;projectBody.append(paragraph);
+      const tags=document.createElement('div');tags.className='project-tags';
+      data.focus.forEach(label=>{const tag=document.createElement('span');tag.textContent=label;tags.append(tag)});
+      projectBody.append(tags);
+      projectModal.classList.add('open');document.body.style.overflow='hidden';
+      document.getElementById('closeProject').focus();
+    }));
+    function closeProject(){projectModal.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('closeProject').addEventListener('click',closeProject);
+    projectModal.addEventListener('click',e=>{if(e.target===projectModal)closeProject()});
 
-    previousFocus = document.activeElement;
-    previousBodyOverflow = document.body.style.overflow;
-
-    modalOverlay.style.display = "flex";
-    modalOverlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-
-    if (modalCloseButton) {
-        modalCloseButton.focus();
-    }
-}
-
-// TUTUP POPUP
-function tutupModal() {
-    if (!modalOverlay) return;
-
-    modalOverlay.style.display = "none";
-    modalOverlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = previousBodyOverflow;
-
-    if (previousFocus && typeof previousFocus.focus === "function") {
-        previousFocus.focus();
-    }
-}
-
-// TUTUP JIKA AREA LUAR POPUP DIKLIK
-function tutupModalDiLuar(event) {
-    if (event.target === modalOverlay) {
-        tutupModal();
-    }
-}
-
-// DUKUNGAN KEYBOARD
-document.addEventListener("keydown", function(event) {
-    if (!modalOverlay || modalOverlay.style.display !== "flex") {
-        return;
-    }
-
-    // Tutup popup dengan tombol Escape
-    if (event.key === "Escape") {
-        event.preventDefault();
-        tutupModal();
-        return;
-    }
-
-    // Jaga fokus keyboard tetap di dalam popup
-    if (event.key === "Tab" && modalCard) {
-        const focusableElements = modalCard.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), ' +
-            'select:not([disabled]), textarea:not([disabled]), ' +
-            '[tabindex]:not([tabindex="-1"])'
-        );
-
-        const elements = Array.from(focusableElements)
-            .filter(element => element.getClientRects().length > 0);
-
-        if (elements.length === 0) {
-            event.preventDefault();
-            return;
-        }
-
-        const firstElement = elements[0];
-        const lastElement = elements[elements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-        } else if (
-            !event.shiftKey &&
-            document.activeElement === lastElement
-        ) {
-            event.preventDefault();
-            firstElement.focus();
-        }
-    }
-});
-
-// MULAI ROTASI KUTIPAN OTOMATIS
-quoteTimer = setInterval(gantiQuote, 10000);
-
-
-const changelogData = [
-  {
-    date: "14 Oktober 2026",
-    desc: "Menambahkan metadata SEO dan memperbarui deskripsi website."
-},
-  {
-        date: "4 Oktober 2026",
-        desc: "Menambahkan sistem popup untuk melihat riwayat penuh log perubahan dan membatasi tampilan utama."
-    },
-    {
-        date: "4 Oktober 2026",
-        desc: 'Memindahkan 20 quotes interaktif tepat ke bawah foto "Upayy.jpg" di bagian Hero Section.'
-    },
-    {
-        date: "4 Oktober 2026",
-        desc: "Memisahkan bagian log perubahan, menghapus nomor penomoran, serta memperbarui estetika visual situs."
-    },
-    {
-        date: "Oktober 2026",
-        desc: "Memperbarui tata letak halaman profil, menyelaraskan gaya estetika gelap, serta memperkaya bidang eksplorasi minat."
-    },
-    {
-        date: "Awal Pengembangan",
-        desc: 'Inisialisasi pembuatan portofolio pribadi "Si Paling Penasaran" dengan fokus pada identitas dan kerangka berpikir.'
-    }
-];
-
-function renderChangelog(targetId, data) {
-    const container = document.getElementById(targetId);
-    if (!container) return;
-
-    container.replaceChildren();
-
-    data.forEach(item => {
-        const entry = document.createElement("div");
-        entry.className = "changelog-item";
-
-        const date = document.createElement("div");
-        date.className = "changelog-date";
-        date.textContent = item.date;
-
-        const desc = document.createElement("div");
-        desc.className = "changelog-desc";
-        desc.textContent = item.desc;
-
-        entry.append(date, desc);
-        container.appendChild(entry);
-    });
-}
-
-function renderAllChangelog() {
-    renderChangelog("changelogPreview", changelogData.slice(0, 3));
-    renderChangelog("changelogFull", changelogData);
-}
-
-renderAllChangelog();
-
-        function bukaModal() {
-            document.getElementById("changelogModal").style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        function tutupModal() {
-            document.getElementById("changelogModal").style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-
-        function tutupModalDiLuar(event) {
-            const modalOverlay = document.getElementById("changelogModal");
-            if (event.target === modalOverlay) {
-                tutupModal();
-            }
-        }
-    </script>
-
+    const quotes=[
+      "Mempertanyakan segala sesuatu adalah awal dari kebebasan berpikir.",
+      "Logika membawamu dari titik A ke titik B, rasa penasaran membawamu ke mana saja.",
+      "Lebih baik punya banyak pertanyaan daripada merasa tahu segalanya.",
+      "Dunia bukan sekadar hitam dan putih; ada lautan abu-abu tempat analisis hidup.",
+      "Jangan menerima narasi mentah-mentah sebelum membongkar fondasinya.",
+      "Teknologi tanpa nalar kritis dapat membuat manusia mudah disetir.",
+      "Semakin banyak hal yang gue pelajari, semakin sadar betapa sedikit yang gue ketahui.",
+      "Empati tanpa logika itu rapuh, logika tanpa empati itu dingin.",
+      "Jangan takut pada ketidaktahuan; takutlah pada kepuasan diri yang menghentikan belajar.",
+      "Tetap penasaran, tetap kritis, dan jangan berhenti mempertanyakan realitas."
+    ];
+    let quoteIndex=0;
+    const quoteBox=document.getElementById('quoteBox');
+    function nextQuote(){quoteIndex=(quoteIndex+1)%quotes.length;const el=document.getElementById('quoteText');el.style.opacity='0';setTimeout(()=>{el.textContent='“'+quotes[quoteIndex]+'”';el.style.opacity='1'},180)}
+    quoteBox.addEventListener('click',nextQuote);
+    quoteBox.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();nextQuote()}});
+    const entries=[
+      {date:"14 Oktober 2026",desc:"Menambahkan metadata SEO dan memperbarui deskripsi website."},
+      {date:"4 Oktober 2026",desc:"Menambahkan sistem popup untuk melihat riwayat penuh log perubahan."},
+      {date:"4 Oktober 2026",desc:'Memindahkan 20 quotes interaktif ke bawah foto "Upayy.jpg".'},
+      {date:"4 Oktober 2026",desc:"Memisahkan bagian log perubahan dan memperbarui estetika visual situs."},
+      {date:"Oktober 2026",desc:"Memperbarui tata letak profil dan memperkaya bidang eksplorasi minat."},
+      {date:"Awal pengembangan",desc:'Inisialisasi portofolio pribadi "Si Paling Penasaran".'}
+    ];
+    function renderTimeline(target,data){const root=document.getElementById(target);data.forEach(item=>{const node=document.createElement('div');node.className='timeline-item';const date=document.createElement('div');date.className='timeline-date';date.textContent=item.date;const desc=document.createElement('p');desc.className='timeline-desc';desc.textContent=item.desc;node.append(date,desc);root.append(node)})}
+    renderTimeline('changelogPreview',entries.slice(0,3));renderTimeline('changelogFull',entries);
+    const logModal=document.getElementById('logModal');
+    function openLog(){logModal.classList.add('open');document.getElementById('closeLog').focus();document.body.style.overflow='hidden'}
+    function closeLog(){logModal.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('openLog').addEventListener('click',openLog);
+    document.getElementById('closeLog').addEventListener('click',closeLog);
+    logModal.addEventListener('click',e=>{if(e.target===logModal)closeLog()});
+    const imageModal=document.getElementById('imageModal');
+    document.querySelectorAll('.zoomable').forEach(img=>img.addEventListener('click',()=>{document.getElementById('lightboxImg').src=img.src;imageModal.classList.add('open');document.body.style.overflow='hidden'}));
+    function closeImage(){imageModal.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('closeImage').addEventListener('click',closeImage);
+    imageModal.addEventListener('click',e=>{if(e.target===imageModal)closeImage()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLog();closeImage();closeProject()}});
+    const menu=document.getElementById('mainNav'),toggle=document.getElementById('menuToggle');
+    toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰'});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    if('IntersectionObserver'in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const observer=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){item.target.classList.add('visible');observer.unobserve(item.target)}}),{threshold:.08});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
+  </script>
 </body>
-
 </html>
